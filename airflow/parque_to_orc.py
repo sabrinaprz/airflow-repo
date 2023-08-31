@@ -14,5 +14,5 @@ if __name__ == '__main__':
     #   spark: SparkSession = SparkSession.builder.config("spark.jars.packages", "com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:3.3.3").master("local[*]").appName(
     #       "SparkByExamples.com").getOrCreate()
     #
-    df = spark.read.options(header='True', inferSchema='True').csv("s3://takeo1/data.csv")
-    df.write.parquet("s3://takeo1/data.parquet")
+    df = spark.read.options(header='True', inferSchema='True').parquet("s3://takeo1/data.parquet")
+    df.write.orc("s3://takeo1/data.orc")
