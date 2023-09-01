@@ -1,6 +1,5 @@
 name: Deploy To S3
-
-on:
+'on':
   push:
     branches:
       - main
@@ -9,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - uses: shallwefootball/s3-upload-action@master
         with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'airflow'
-          destination_dir: 'project/'
+          aws_key_id: '${{ secrets.AWS_KEY_ID }}'
+          aws_secret_access_key: '${{ secrets.AWS_SECRET_ACCESS_KEY}}'
+          aws_bucket: '${{ secrets.AWS_BUCKET }}'
+          source_dir: airflow
+          destination_dir: project/
